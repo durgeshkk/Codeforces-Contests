@@ -1,0 +1,1 @@
+{"name":"Local: dk","url":"e:\\CodeForces\\Contest #817(DIV 4)\\dk.cpp","tests":[{"id":1661884276213,"input":"7\n6 \nTimure\n6\nTimurr\n5\nTimUr\n5\ntimUr\n5\nRUtim\n5\nTimUR\n5\nTIMUR","output":"no\nno\nno\nno\nno\nno\nno"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Contest #817(DIV 4)\\dk.cpp","group":"local","local":true}

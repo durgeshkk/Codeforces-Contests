@@ -1,0 +1,234 @@
+#include<bits/stdc++.h>
+#include<iomanip>
+#include <deque>
+#include <bitset>
+#include <cstdint>
+//#include <ext/pb_ds/assoc_container.hpp> // Common file
+//#include <ext/pb_ds/tree_policy.hpp>
+//using namespace __gnu_pbds;
+//#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+#define ll long long int
+#define all(a) a.begin(),a.end()
+#define enter(a) for(ll i=0;i<a.size();i++) cin>>a[i];
+#define forj(n) for (ll j = 0; j < n; j++)
+#define show(a) for(auto e: a) cout<<e<<" "; cout<<endl;
+using namespace std;
+ll mod = (ll)(1e9+7);
+ 
+/*
+ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
+ll mod_mul(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a * b) % m) + m) % m;}
+ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
+ll gcd(ll a, ll b) {if (b > a) {return gcd(b, a);} if (b == 0) {return a;} return gcd(b, a % b);}
+ll expo(ll a, ll b, ll mod) {ll res = 1; while (b > 0) {if (b & 1)res = (res * a) % mod; a = (a * a) % mod; b = b >> 1;} return res;}
+void extendgcd(ll a, ll b, ll*v) {if (b == 0) {v[0] = 1; v[1] = 10; v[2] = a; return ;} extendgcd(b, a % b, v); ll x = v[1]; v[1] = v[0] - v[1] * (a / b); v[0] = x; return;} //pass an arry of size1 3
+ll mminv(ll a, ll b) {ll arr[3]; extendgcd(a, b, arr); return mod_add(arr[0], 0, b);} //for non prime b
+ll mminvprime(ll a, ll b) {return expo(a, b - 2, b);}
+ll ceil_div(ll a, ll b) {return a % b == 0 ? a / b : a / b + 1;}
+bool revsort(ll a, ll b) {return a > b;}
+ll mod_div(ll a, ll b, ll m) {a = a % m; b = b % m; return (mod_mul(a, mminvprime(b, m), m) + m) % m;}  //only for prime m
+ll combination(ll n, ll r, ll m, ll *fact, ll *ifact) {ll val1 = fact[n]; ll val2 = ifact[n - r]; ll val3 = ifact[r]; return (((val1 * val2) % m) * val3) % m;}
+void google(int t) {cout << "Case #" << t << ": ";}
+ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0)n /= 2;} for (ll i = 3; i <= sqrt(n); i += 2) {if (n % i == 0) {while (n % i == 0)n /= i; number = (number / i * (i - 1));}} if (n > 1)number = (number / n * (n - 1)) ; return number;} //O(sqrt(N))
+*/
+ 
+// Fxn call(for ((b/a)%mod)) :
+// ll c = (b*power(a,mod-2(prime num in power of a),mod))%mod;
+// Also for formula like nCr..
+ll power(ll base,ll n,ll mod){
+   ll ans = 1;
+   while( n!= 0){
+      if(n%2){
+          n-=1;
+          ans = (ans*base)%mod;
+      }
+      else{
+          n /= 2;
+          base = (base*base)%mod;
+      }
+   }
+   return ans;
+}
+ 
+ll expo(ll a, ll b, ll mod) {ll res = 1; while (b > 0) {if (b & 1)res = (res * a) % mod; a = (a * a) % mod; b = b >> 1;} return res;}
+ 
+ll sieve[1000005];
+void createsieve(){
+    ll ntlen = 1000000;
+    sieve[0] = 0;
+    sieve[1] = 0;
+    for(ll i = 2;i<=ntlen;++i){
+        sieve[i] = 1;
+    }
+ 
+    for(ll i = 2;i*i<=ntlen;++i){
+ 
+        // Set all multiples to 0
+        if(sieve[i] == 1){
+ 
+            for(ll j = i*i;j<=ntlen;j+=i){
+                 sieve[j] = 0;
+            }
+        }
+    }
+}
+ 
+ 
+vector<ll> adj[100004];
+ 
+void tree(){
+    ll n;
+    cin>>n;
+
+    ll u,v;
+    cin>>u>>v;
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+ 
+/*
+Is adding 1 beneficial ??
+Alone NO but it can help for cover up
+
+Adding 2 benefitted??
+2 for shifts + 2 for movement : It can
+For x or more ==> Always (x >=3)
+As, 2 shifts rem same + x for movement
+*/
+
+void my_solver()
+{
+ 
+    ll n,k;cin>>n>>k;
+    vector<ll> left(n);enter(left);
+    vector<ll> right(n);enter(right);
+
+    ll ans = LLONG_MAX;
+    vector<pair<ll,ll>> v;
+    forj(n){v.push_back({left[j],right[j]});}
+
+    ll cntr = 0;// 1 trackerzz
+    ll colored = 0,segs = 0,sm = 0;
+    for(ll i = 0;i<n;++i){
+        ll len = (v[i].second-v[i].first+1);
+        sm += len;
+
+        if(len >= k){
+            ans = min(ans,v[i].first+2+k-1);
+        }
+        if(len+colored >= k){
+            ll sa = (segs+1)*2;//shift up+down
+            sa += (v[i].first);//dist travelled by ptr
+            ll rem_dist = (k-colored-1);
+            sa += rem_dist;
+            ans = min(ans,sa);
+        }else if(cntr+len+colored >= k){
+            ll sa = (segs+1)*2;//shift up+down
+            ll ones_req = (k-colored-len);
+            sa += (v[i].second);//dist travelled by ptr,since we cover complete len
+            sa += (ones_req*2);//each one will req shift up & down
+            ans = min(ans,sa);
+        }
+        // cout<<ans<<" ";
+        if(len == 1){++cntr;}
+        else{colored += len;++segs;}
+    }
+
+    if(sm < k){
+        ans = -1;
+    }
+    cout<<ans<<endl;
+    return;
+}
+ 
+
+void solve()
+{
+ 
+    ll n,k;cin>>n>>k;
+    vector<ll> left(n);enter(left);
+    vector<ll> right(n);enter(right);
+
+    ll ans = LLONG_MAX;
+    vector<pair<ll,ll>> v;
+    forj(n){v.push_back({left[j],right[j]});}
+
+    ll cntr = 0;// 1 trackerzz
+    ll colored = 0,segs = 0,sm = 0;
+    for(ll i = 0;i<n;++i){
+        ll len = (v[i].second-v[i].first+1);
+        sm += len;
+
+        if((len+colored) >= k){
+            ll rem_dist = (k-colored-1);
+            ll sa = v[i].first+rem_dist;//tot_dist
+            sa += (2*(segs+1));
+            ans = min(ans,sa);
+            break;
+        }else if(len+colored >= k){
+            ll sa = (segs+1)*2;//shift up+down
+            sa += (v[i].first);//dist travelled by ptr
+            ll rem_dist = (k-colored-1);
+            sa += rem_dist;
+            ans = min(ans,sa);
+        }else if(cntr+len+colored >= k){
+            ll sa = (segs+1)*2;//shift up+down
+            ll ones_req = (k-colored-len);
+            sa += (v[i].second);//dist travelled by ptr,since we cover complete len
+            sa += (ones_req*2);//each one will req shift up & down
+            ans = min(ans,sa);
+        }
+
+        if(len == 1){++cntr;}
+        else{colored += len;++segs;}
+
+        if(cntr+colored >= k){
+            ll sa = (segs)*2;//shift up+down
+            ll ones_req = k-colored;
+            sa += (v[i].second);//dist travelled by ptr,since we cover complete len
+            sa += (ones_req*2);//each one will req shift up & down
+            ans = min(ans,sa);
+        }
+    }
+
+    if(sm < k){
+        ans = -1;
+    }
+    cout<<ans<<endl;
+    /*
+    ll l = 0,h = 4*right[n-1];
+    while(l <= h){
+        ll moves = (l+h)/2;
+        if(check(moves)){
+            h = moves-1;
+        }else{
+            l = moves+1;
+        }
+    }
+    */
+    return;
+}
+ 
+int main()
+{
+   ios_base::sync_with_stdio(false);
+   cin.tie(NULL);
+   cout.tie(NULL);
+   //setprecision(20);// also use precision with ans now
+   // use setprecision before ans
+   //precomputefact();
+   //createsieve();
+   //bfs();//call in solve()
+   //dfs(1,0);//call in solve()
+ 
+   ll t=1;
+   cin >> t;
+   ll i = 1;
+   while (t--)
+   {
+       solve();
+       ++i;
+   }
+   //solve();
+   return 0;
+}

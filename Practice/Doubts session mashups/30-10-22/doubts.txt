@@ -1,0 +1,11 @@
+1. Meeting on the line  https://codeforces.com/problemset/problem/1730/B
+2. Sending a Sequence over the network  https://codeforces.com/problemset/problem/1741/Ex
+3. Factorial Divisibility  https://codeforces.com/problemset/problem/1753/B
+4. Part & sweets : https://codeforces.com/problemset/problem/1159/C
+
+
+
+
+----- If tym -----
+1. Cute Seq : https://codeforces.com/contest/1166/problem/D 
+2. The LCMs Must be large : https://codeforces.com/contest/1166/problem/E
