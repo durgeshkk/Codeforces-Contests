@@ -12,5 +12,3 @@ echo Files Added
 git commit -m "Codechef Last Contest Solutions Added"
 git push origin feature
 echo Push Done, PR Raised
-git branch -d feature
-echo Feature Branch Deleted
