@@ -1,0 +1,1 @@
+{"name":"Local: Interactive_Practice","url":"e:\\CodeForces\\Practice\\1700\\Interactive_Practice.cpp","tests":[{"id":1671001955912,"input":"5\n2 1 5 3 3","output":"2"},{"id":1671001969091,"input":"1\n1","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Practice\\1700\\Interactive_Practice.cpp","group":"local","local":true}

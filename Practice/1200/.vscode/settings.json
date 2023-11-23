@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "iomanip": "cpp"
+    },
+    "editor.fontFamily": "\"Fira Code\"",
+    "editor.fontLigatures": true,
+    "files.autoSave": "off"
+}

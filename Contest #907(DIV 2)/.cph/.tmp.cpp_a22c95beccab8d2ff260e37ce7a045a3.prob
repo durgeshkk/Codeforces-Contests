@@ -1,0 +1,1 @@
+{"name":"Local: tmp","url":"e:\\CodeForces\\Contest #907(DIV 2)\\tmp.cpp","tests":[{"id":1698678453467,"input":"4\n5 3\n1 2 3 4 4\n2 3 4\n7 3\n7 8 12 36 48 6 3\n10 4 2\n5 4\n2 2 2 2 2\n1 1 1 1\n5 5\n1 2 4 8 16\n5 2 3 4 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Contest #907(DIV 2)\\tmp.cpp","group":"local","local":true}

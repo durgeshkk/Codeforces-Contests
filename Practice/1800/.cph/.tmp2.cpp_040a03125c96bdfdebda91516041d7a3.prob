@@ -1,0 +1,1 @@
+{"name":"Local: tmp2","url":"e:\\CodeForces\\Practice\\1800\\tmp2.cpp","tests":[{"id":1685626832554,"input":"1\n6\n1 12 123 1234 12345 123456","output":"3 28 335 1396 20619 131776 0 \n164144967"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Practice\\1800\\tmp2.cpp","group":"local","local":true}

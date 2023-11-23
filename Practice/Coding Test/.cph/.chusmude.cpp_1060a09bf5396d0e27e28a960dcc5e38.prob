@@ -1,0 +1,1 @@
+{"name":"Local: chusmude","url":"e:\\CodeForces\\Practice\\1500\\Coding Test\\chusmude.cpp","tests":[{"id":1663593714422,"input":"4\n5\n1 0 0 1 0  \n1\n1\n4\n1 1 1 1\n2\n1 0","output":"4\n1\n4\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Practice\\1500\\Coding Test\\chusmude.cpp","group":"local","local":true}

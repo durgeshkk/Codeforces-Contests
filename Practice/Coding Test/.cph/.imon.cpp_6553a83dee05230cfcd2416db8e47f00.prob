@@ -1,0 +1,1 @@
+{"name":"Local: imon","url":"e:\\CodeForces\\Practice\\1500\\Coding Test\\imon.cpp","tests":[{"id":1661537431480,"input":"4\n2 2 2 1\n2 2 1 1\n2 2 1 2\n2 3 3 3","output":"Yes\nNo\nYes\nYes"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Practice\\1500\\Coding Test\\imon.cpp","group":"local","local":true}

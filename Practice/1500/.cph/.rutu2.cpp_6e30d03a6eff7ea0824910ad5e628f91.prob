@@ -1,0 +1,1 @@
+{"name":"Local: rutu2","url":"e:\\CodeForces\\Practice\\1500\\rutu2.cpp","tests":[{"id":1660150342728,"input":"3\n2 2\n00\n2 4\n11\n3 3\n101","output":"4\n1\n2"},{"id":1660150953284,"input":"2\n5 2\n00100\n11 2\n01010101011","output":"5\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CodeForces\\Practice\\1500\\rutu2.cpp","group":"local","local":true}
