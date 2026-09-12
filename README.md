@@ -6,7 +6,9 @@ Competitive Programming Contests Solutions
 Competitive programming solutions, written in C++17.
 
 **Profile:** [https://codeforces.com/profile/golu_0409](https://codeforces.com/profile/golu_0409)
+
 **Current rating:** Expert (1728)
+
 **Best contest finish:** Global Rank 174 — Codeforces Round 855
 
 ---
